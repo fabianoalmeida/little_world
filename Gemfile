@@ -16,6 +16,11 @@ end
 
 gem 'jquery-rails'
 
+group :development do
+  gem 'ruby-debug19'
+  gem 'sextant'
+end
+
 group :test do
   gem 'turn', :require => false
   gem 'rspec-rails'

@@ -19,7 +19,6 @@ gem 'jquery-rails'
 group :test do
   gem 'turn', :require => false
   gem 'rspec-rails'
-  gem 'mocha'
   gem 'factory_girl_rails', "~> 3.4.0"
   gem 'database_cleaner'
 end

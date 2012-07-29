@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LittleWorld</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title><%= "Little World" %></title>
+  <%= stylesheet_link_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="master">
+    <div class="topbar">
+      <div class="fill">
+        <div class="container">
+          <%= link_to "Little World", root_path, :class => 'brand' %>
+          <div class="nav-collapse">
+	        <%= main_menu %>
+	      </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <% if notice %>
+      <div class="alert-message success fade in" data-alert="alert">
+        <a class="close" href="#">×</a>
+        <p><%= notice %></p>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert-message alert fade in" data-alert="alert">
+        <a class="close" href="#">×</a>
+        <p><%= alert %></p>
+      </div>
+    <% end %>
+	
+    <div class="row">
+      <div class="span16">
+        <%= yield :subtitle %>
+      </div>
+      <div class="span15">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
 
-<%= yield %>
-
+  <%= javascript_include_tag "application" %> 
+  <%= yield :javascript %>
 </body>
 </html>

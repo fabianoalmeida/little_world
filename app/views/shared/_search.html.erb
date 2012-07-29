@@ -1,0 +1,7 @@
+<%= form_tag friends_path, :method => 'get' do %>  
+  <p>  
+    <%= text_field_tag :latitude, params[:latitude], :placeholder => 'latitude' %>  
+    <%= text_field_tag :longitude, params[:longitude], :placeholder => 'longitude' %>  
+    <%= submit_tag "Search", :name => nil, :class => 'btn' %>  
+  </p>  
+<% end %>

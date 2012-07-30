@@ -4,10 +4,8 @@ class FriendsController < ApplicationController
   # GET /friends
   # GET /friends.json
   def index
-    # debugger
-    @friends = Friend.where( latitude: params[:latitude] ) if params[:latitude]
-    params[:latitude] = nil
-    @friends ||= Friend.all
+    @friends = Friend.search( params[:latitude], params[:longitude] )    
+    params[:latitude], params[:longitude] = nil, nil
 
     respond_to do |format|
       format.html # index.html.erb

@@ -18,4 +18,5 @@
 //= require bootstrap-buttons
 //= require bootstrap-modal
 //= require jquery-ui
+//= require jquery.miniColors.min
 //= require_tree .

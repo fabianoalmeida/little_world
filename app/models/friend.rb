@@ -19,9 +19,9 @@ class Friend < ActiveRecord::Base
     
     friends = []
     
-    friends = where( 'latitude = ?', latitude.to_i )   unless latitude.empty?
-    friends = where( 'longitude = ?', longitude.to_i ) unless longitude.empty?
-    friends = where( 'latitude = ? and longitude = ?', latitude.to_i, longitude.to_i ) unless latitude.empty? | longitude.empty?
+    friends = where( 'latitude = ?', latitude.to_i )   unless latitude.to_s.empty?
+    friends = where( 'longitude = ?', longitude.to_i ) unless longitude.to_s.empty?
+    friends = where( 'latitude = ? and longitude = ?', latitude.to_i, longitude.to_i ) unless latitude.to_s.empty? | longitude.to_s.empty?
     
     friends = near_to( friends.first ) unless friends.empty?
     

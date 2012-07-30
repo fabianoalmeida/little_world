@@ -3,7 +3,6 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.6'
 gem 'sqlite3'
 gem 'simple_form'
-gem 'squeel'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -19,7 +18,6 @@ gem 'jquery-rails'
 
 group :development do
   gem 'ruby-debug19'
-  gem 'sextant'
 end
 
 group :test do

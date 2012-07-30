@@ -23,23 +23,23 @@ class Friend < ActiveRecord::Base
     friends = where( 'longitude = ?', longitude.to_i ) unless longitude.empty?
     friends = where( 'latitude = ? and longitude = ?', latitude.to_i, longitude.to_i ) unless latitude.empty? | longitude.empty?
     
-    friends << near_to( friends.first ) unless friends.empty?
+    friends = near_to( friends.first ) unless friends.empty?
     
-    friends.limit(3)
+    friends.limit(4)
   end
   
   private
   
   def self.near_to( friend )
+    radius = Math.exp(Math.cos(friend.latitude))
     
-    lat_begin = friend.latitude / 1000
-    lat_end = friend.latitude * 1000
-    
-    long_begin = friend.longitude / 1000
-    long_end = friend.longitude * 1000
-    
-    where( 'latitude between ? and ? and longitude between ? and ?', 
-        lat_begin, lat_end, long_begin, long_end )
+    select(:id)
+    .select(:name)
+    .select(:latitude)
+    .select(:longitude)
+    .select(:created_at)
+    .select("((#{friend.latitude} - latitude) * (#{friend.latitude} - latitude) + (#{friend.longitude} - longitude) * (#{friend.longitude} - longitude) * #{radius})  as distance")
+    .order("distance")
   end
 
 end

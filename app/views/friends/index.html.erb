@@ -1,14 +1,12 @@
 <%- model_class = Friend -%>
 
 <% content_for :subtitle do %>
-  <div class="page-header">
-    <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
-  </div>
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 <% end %>
 
 <%= render 'shared/search' %>
 
-<table class="table table-striped">
+<table id="friends">
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
@@ -33,7 +31,7 @@
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       friend_path(friend),
                       :method => :delete,
-                      :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')),
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn danger' %>
         </td>
       </tr>
